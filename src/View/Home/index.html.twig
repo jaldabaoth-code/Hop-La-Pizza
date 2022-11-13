@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <header>
+        <h1 class="m-2">Hop la pizza,des pizzas au top près de chez vous !</h1> 
+    </header>
+    {% if notification %}
+        <div class="alert alert-info">{{ notification }}</div>
+    {% endif %}
+{% endblock %}

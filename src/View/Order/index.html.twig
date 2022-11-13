@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/order.css">
+{% endblock %}
+
+{% block content %}
+	<header>
+		<h1 class="m-2">Ma commande</h1>
+	</header>
+	<main class="container mt-5">
+		{% if dishes is not empty %}
+			<table class="table table-hover order ">
+				<thead>
+					<tr>
+						<th></th>
+						<th>Plat</th>
+						<th>Quantité</th>
+						<th>Prix</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					{% for dish in dishes %}
+						<tr>
+							<td><img src="/uploads/{{ dish.image }}" alt=""></td>
+							<td>{{ dish.name }}</td>
+							<td>
+								<a class="btn btn-primary" href="/order/substract/{{ dish.id }}">-</a>
+								{{ dish.quantity }}
+								<a class="btn btn-primary" href="/order/add/{{ dish.id }}">+</a>
+							</td>
+							<td>{{ dish.quantity * dish.price }}€</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<a class="btn btn-danger btn-sm" href="/order/empty">Vider le panier</a>
+			<section>
+				<h2 class="mt-5">Confirmation</h2>
+				<ul>
+				{% for error in errors %} 
+					<li>{{ error }}</li>
+				{% endfor %}
+				</ul>
+				<form action="" method="post" novalidate>
+					<div class="mb-3">
+						<label for="email" class="form-label">Email</label>
+						<input type="email" name="email" id="email" class="form-control" value="{{order.email}}" required>
+					</div>
+					<button class="btn btn-success">Confimer la commande</button>
+				</form>
+			</section>
+		{% else %}
+			<div class="alert alert-warning">Le panier est vide</div>
+		{% endif %}
+	</main>
+{% endblock %}

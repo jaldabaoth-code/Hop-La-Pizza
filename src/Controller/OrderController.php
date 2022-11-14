@@ -58,8 +58,6 @@ class OrderController extends AbstractController
                 $errors[] = 'Le panier est vide';
             }
             if (empty($errors)) {
-                // enregistrer l'order en database
-                // envoyer un email de confirmation
                 $transport = Transport::fromDsn(MAILER_DSN);
                 $mailer = new Mailer($transport);
                 $html = $this->twig->render('Order/email.html.twig', [

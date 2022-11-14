@@ -51,6 +51,8 @@ class AdminDishController extends AbstractController
     public function edit(int $id): string
     {
         $errors = [];
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll('name', 'DESC');
         $dishManager = new DishManager();
         $dish = $dishManager->selectOneById($id);
         if ($dish === false) {
@@ -59,20 +61,17 @@ class AdminDishController extends AbstractController
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $dish = array_map('trim', $_POST);
             $dataErrors = $this->validate($dish);
-/*             if ($_FILES['image']) {
-            $fileErrors = $this->validateFile($_FILES['image']);
-            } */
             $errors = array_merge($dataErrors);
             if (empty($errors)) {
                 // Update en database
                 $dish['id'] = $id;
+
                 if ($_FILES['image']['name']) {
                     $fileName = uniqid() . '_' . $_FILES['image']['name'];
                     $dish['image'] = $fileName;
                     move_uploaded_file($_FILES['image']['tmp_name'], __DIR__ . '/../../public/uploads/' .  $fileName);
                 } else {
-/*                     $fileName = uniqid() . '_' . $_FILES['image']['name'];
-                    $dish['image'] = $fileName; */
+                    $dish['image'] = $dishManager->selectOneById($id)['image'];
                 }
                 $dishManager->update($dish);
                 // Redirection
@@ -81,7 +80,8 @@ class AdminDishController extends AbstractController
         }
         return $this->twig->render('Admin/Dish/edit.html.twig', [
             'errors' => $errors,
-            'dish' => $dish
+            'dish' => $dish,
+            'categories' => $categories
         ]);
     }
 

@@ -1,9 +1,7 @@
 {% extends 'layout.html.twig' %}
-
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/admin_dish.css">
 {% endblock %}
-
 {% block content %}
 	<main class="container">
 		<h1 class="mt-5 pb-2">Liste des plats</h1>
@@ -22,12 +20,12 @@
 				{% for dish in dishes %}
 					<tr>
 						<td><img class="dish-image" src="/uploads/{{ dish.image }}" alt=""/></td>
-						<td>{{ dish.name}}</td>
+						<td>{{ dish.name }}</td>
 						<td>{{ dish.category_name }}</td>
 						<td>{{ dish.price }}€</td>
 						<td>
 							<a class="btn btn-sm btn-secondary" href="/adminDish/edit/{{ dish.id }}">Editer</a>
-							<form method="POST" onSubmit="return confirm('Voulez vous supprimer ?');" action="/adminDish/delete/{{dish.id}}">
+							<form method="POST" onSubmit="return confirm('Voulez vous supprimer ?');" action="/adminDish/delete/{{ dish.id }}">
 								<button class="mt-1 btn btn-sm btn-danger">Supprimer</button>
 							</form>
 						</td>

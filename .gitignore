@@ -3,5 +3,6 @@
 .phpcs-cache
 *.cache
 db.php
+mail.php
 .idea
 public/uploads

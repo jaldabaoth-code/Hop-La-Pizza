@@ -29,13 +29,15 @@ class DishManager extends AbstractManager
     public function update(array $dish): void
     {
         $query = "UPDATE " . self::TABLE . " 
-            SET `name`=:name, `description`=:description, `image`=:image, `price`=:price WHERE id=:id";
+            SET `name`=:name, `description`=:description, `image`=:image, `price`=:price, `category_id`=:category
+            WHERE id=:id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('name', $dish['name'], \PDO::PARAM_STR);
         $statement->bindValue('description', $dish['description'], \PDO::PARAM_STR);
         $statement->bindValue('image', $dish['image'], \PDO::PARAM_STR);
-        $statement->bindValue('id', $dish['id'], \PDO::PARAM_INT);
+        $statement->bindValue('category', $dish['category'], \PDO::PARAM_INT);
         $statement->bindValue('price', $dish['price']);
+        $statement->bindValue('id', $dish['id'], \PDO::PARAM_INT);
         $statement->execute();
     }
 }

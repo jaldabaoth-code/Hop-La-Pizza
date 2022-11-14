@@ -1,0 +1,8 @@
+<?php
+
+/*
+ * This file define Mail infos, for be able to send mail
+ */
+
+define('MAILER_DSN', 'smtp://code@smtp.mailtrap.io:2525?encryption=tls&auth_mode=login');
+define('MAIL_FROM', 'exemple@gmail.com');

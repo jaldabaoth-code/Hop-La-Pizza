@@ -8,14 +8,10 @@
 	</head>
 	<body>
 		<h1>Confirmation commande Hop la Pizza</h1>
-		Votre mail est
-		{{order.email}}
+		<p>Votre mail est {{ order.email }}</p>
 		<ul>
 			{% for dish in dishes %}
-				<li>{{dish.name}}
-					{{ dish.quantity}}
-					=
-					{{ dish.quantity * dish.price }}€</li>
+				<li>{{ dish.name }} x {{ dish.quantity}} = {{ dish.quantity * dish.price }}€</li>
 			{% endfor %}
 		</ul>
 	</body>

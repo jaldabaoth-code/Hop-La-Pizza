@@ -1,9 +1,7 @@
 {% extends 'layout.html.twig' %}
-
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/order.css">
 {% endblock %}
-
 {% block content %}
 	<header>
 		<h1 class="m-2">Ma commande</h1>
@@ -20,7 +18,6 @@
 					</tr>
 				</thead>
 				<tbody>
-
 					{% for dish in dishes %}
 						<tr>
 							<td><img src="/uploads/{{ dish.image }}" alt=""></td>
@@ -39,11 +36,11 @@
 			<section>
 				<h2 class="mt-5">Confirmation</h2>
 				<ul>
-				{% for error in errors %} 
-					<li>{{ error }}</li>
-				{% endfor %}
+					{% for error in errors %} 
+						<li>{{ error }}</li>
+					{% endfor %}
 				</ul>
-				<form action="" method="post" novalidate>
+				<form action="" method="POST" novalidate>
 					<div class="mb-3">
 						<label for="email" class="form-label">Email</label>
 						<input type="email" name="email" id="email" class="form-control" value="{{order.email}}" required>

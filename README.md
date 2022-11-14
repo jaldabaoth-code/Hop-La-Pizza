@@ -37,6 +37,7 @@ For this one, just a simple example where users can choose one of their database
     - For get MAILER_DSN=smtp://xxx<br/>
         * "Retrieve and copy MAILER_DSN from : <a href="https://mailtrap.io/inboxes">MAILTRAP</a>
         * Then you go to : -> <b>My Inbox</b> -> <b>SMTP Settings</b> -> <b>Integrations</b> -> <b>PHP</b> -> <b>Symfony 5+</b>
+0. Create a folder : <b>public/uploads</b>
 0. Import the last version of the <b>*dataVx.sql*</b> file in your SQL server, you can do it manually or use the *migration.php* script which will import a <b>*dataVx.sql*</b> file.
 0. Run the internal PHP webserver with `php -S localhost:8000 -t public/`. The option `-t` with `public` as parameter means your localhost will target the `/public` folder.
 0. Go to <b>localhost:8000</b> with your favorite browser.

@@ -14,7 +14,7 @@ abstract class AbstractController
     protected Environment $twig;
 
     /**
-     *  Initializes this class
+     * Initializes this class
      */
     public function __construct()
     {

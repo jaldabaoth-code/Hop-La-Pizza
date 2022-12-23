@@ -65,7 +65,6 @@ class AdminDishController extends AbstractController
             if (empty($errors)) {
                 // Update en database
                 $dish['id'] = $id;
-
                 if ($_FILES['image']['name']) {
                     $fileName = uniqid() . '_' . $_FILES['image']['name'];
                     $dish['image'] = $fileName;

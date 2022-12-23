@@ -34,7 +34,6 @@ abstract class AbstractManager
 
     /**
      * Get one row from database by ID.
-     *
      */
     public function selectOneById(int $id)
     {
